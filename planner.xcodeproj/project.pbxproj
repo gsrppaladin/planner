@@ -14,6 +14,7 @@
 		FEC05CF81EBFB2BC005D0089 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEC05CF71EBFB2BC005D0089 /* Assets.xcassets */; };
 		FEC05CFB1EBFB2BC005D0089 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEC05CF91EBFB2BC005D0089 /* LaunchScreen.storyboard */; };
 		FEC05D031EBFB87C005D0089 /* helperClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC05D021EBFB87C005D0089 /* helperClass.swift */; };
+		FEC05D051EBFC19C005D0089 /* AddEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC05D041EBFC19C005D0089 /* AddEditVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		FEC05CFA1EBFB2BC005D0089 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FEC05CFC1EBFB2BC005D0089 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FEC05D021EBFB87C005D0089 /* helperClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = helperClass.swift; sourceTree = "<group>"; };
+		FEC05D041EBFC19C005D0089 /* AddEditVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				FEC05D021EBFB87C005D0089 /* helperClass.swift */,
 				FEC05CED1EBFB2BB005D0089 /* AppDelegate.swift */,
+				FEC05D041EBFC19C005D0089 /* AddEditVC.swift */,
 				FEC05CEF1EBFB2BB005D0089 /* ViewController.swift */,
 				FEC05CF11EBFB2BC005D0089 /* Main.storyboard */,
 				FEC05CF71EBFB2BC005D0089 /* Assets.xcassets */,
@@ -145,6 +148,7 @@
 			files = (
 				FEC05CF01EBFB2BB005D0089 /* ViewController.swift in Sources */,
 				FEC05CF61EBFB2BC005D0089 /* planner.xcdatamodeld in Sources */,
+				FEC05D051EBFC19C005D0089 /* AddEditVC.swift in Sources */,
 				FEC05CEE1EBFB2BB005D0089 /* AppDelegate.swift in Sources */,
 				FEC05D031EBFB87C005D0089 /* helperClass.swift in Sources */,
 			);
