@@ -20,7 +20,7 @@ class AddEditVC: UIViewController {
     
     @IBOutlet var datePicker: UIDatePicker!
     
-    
+    var passedObject: NSManagedObject?
     
     
     
@@ -31,6 +31,15 @@ class AddEditVC: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let object = passedObject {
+            toDoTxtField.text = object.value(forKey: "taskDescription") as! String
+            datePicker.date = object.value(forKey: "taskDate") as! Date
+            toDoSwitch.isOn = object.value(forKey: "taskStatus") as! Bool
+            featureSwitch.isOn = object.value(forKey: "featured") as! Bool
+        }
+    }
 
     @IBAction func savePressed(_ sender: UIBarButtonItem) {
         
@@ -38,11 +47,16 @@ class AddEditVC: UIViewController {
             print("Please provide to do item")
             return
         }
-        //save new record. 
+        
+        if let object = passedObject {
+            saveObject(object: object, savedRecord: false)
+            return
+        }
+        //save new record.
         
         let todo = NSEntityDescription.insertNewObject(forEntityName: "ToDo", into: context)
-        
-        
+        saveObject(object: todo, savedRecord: true)
+        /*
         todo.setValue(toDoTxtField, forKey: "taskDescription")
         let date = datePicker.date
         let formatter = DateFormatter()
@@ -65,7 +79,7 @@ class AddEditVC: UIViewController {
         }
         
         
-        
+        */
         self.view.endEditing(true)
     }
     
@@ -74,6 +88,60 @@ class AddEditVC: UIViewController {
         self.view.endEditing(true)
         
     }
+    
+    
+    func saveObject(object: NSManagedObject, savedRecord: Bool) {
+        
+        
+        
+        
+        object.setValue(toDoTxtField.text, forKey: "taskDescription")
+        
+        let date = datePicker.date
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MMM-yy"
+        let dateString = formatter.string(from: date)
+        
+        
+        object.setValue(date, forKey: "taskDate")
+        object.setValue(dateString, forKey: "taskDateString")
+        object.setValue(toDoSwitch.isOn, forKey: "taskStatus")
+        object.setValue(featureSwitch.isOn, forKey: "featured")
+        
+        
+        do {
+            try context.save()
+            if savedRecord {
+                print("Record saved successfully")
+            } else {
+                print("Record Updated Successfully")
+            }
+            self.navigationController?.popViewController(animated: true)
+        } catch {
+            if savedRecord {
+                print("Error in saving record")
+            } else {
+                print("Error in updating record")
+            }
+        }
+        
+        
+
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
