@@ -22,7 +22,7 @@ class ToDoTasksTVC: UITableViewController, NSFetchedResultsControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
+        //self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
 
     
@@ -72,6 +72,8 @@ class ToDoTasksTVC: UITableViewController, NSFetchedResultsControllerDelegate {
         
         cell.textLabel?.text = object.value(forKey: "taskDescription")! as? String
         
+        
+        //check the status and if it is true then do the thing.
         if object.value(forKey: "taskStatus") as! Bool == true {
             cell.textLabel?.textColor = UIColor.green
         } else if object.value(forKey: "featured") as! Bool == true {

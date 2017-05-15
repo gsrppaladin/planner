@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FE4DAF0F1EC2A01C00EB170A /* ToDoTasksTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4DAF0E1EC2A01C00EB170A /* ToDoTasksTVC.swift */; };
+		FEA2F5561EC935CB00577769 /* SummaryTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA2F5551EC935CB00577769 /* SummaryTVC.swift */; };
 		FEC05CEE1EBFB2BB005D0089 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC05CED1EBFB2BB005D0089 /* AppDelegate.swift */; };
 		FEC05CF01EBFB2BB005D0089 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC05CEF1EBFB2BB005D0089 /* ViewController.swift */; };
 		FEC05CF31EBFB2BC005D0089 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEC05CF11EBFB2BC005D0089 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		FE4DAF0E1EC2A01C00EB170A /* ToDoTasksTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoTasksTVC.swift; sourceTree = "<group>"; };
+		FEA2F5551EC935CB00577769 /* SummaryTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryTVC.swift; sourceTree = "<group>"; };
 		FEC05CEA1EBFB2BB005D0089 /* planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = planner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEC05CED1EBFB2BB005D0089 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FEC05CEF1EBFB2BB005D0089 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				FEC05D021EBFB87C005D0089 /* helperClass.swift */,
+				FEA2F5551EC935CB00577769 /* SummaryTVC.swift */,
 				FEC05CED1EBFB2BB005D0089 /* AppDelegate.swift */,
 				FE4DAF0E1EC2A01C00EB170A /* ToDoTasksTVC.swift */,
 				FEC05D041EBFC19C005D0089 /* AddEditVC.swift */,
@@ -154,6 +157,7 @@
 				FE4DAF0F1EC2A01C00EB170A /* ToDoTasksTVC.swift in Sources */,
 				FEC05D051EBFC19C005D0089 /* AddEditVC.swift in Sources */,
 				FEC05CEE1EBFB2BB005D0089 /* AppDelegate.swift in Sources */,
+				FEA2F5561EC935CB00577769 /* SummaryTVC.swift in Sources */,
 				FEC05D031EBFB87C005D0089 /* helperClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
