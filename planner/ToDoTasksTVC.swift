@@ -10,7 +10,15 @@ import UIKit
 import CoreData
 
 class ToDoTasksTVC: UITableViewController, NSFetchedResultsControllerDelegate {
-
+//the NSFetchedResultsControllerDelegate uses methods in this protocol to notify its delegate that the controller's fetch results have been changed due to an add, remove, move, or update operations. Below are the other delegate methods.
+    /*
+    controllerWillChangeContent - we can call tableView.beginUpdates()
+    controllerDidChangeContent - we can call tableView.endUpdates()
+    controllerDidChange sectionInfo atSectionIndex for type - update table sections info
+    Controller didChange Object - handle tableView for .insert, .delete, .update, .move updates.
+    */
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -158,8 +166,13 @@ class ToDoTasksTVC: UITableViewController, NSFetchedResultsControllerDelegate {
         //on what context it will be preformed. optionally, can pass if we want any sections. if we want any cached files. 
         
         _fetchedResultsController = NSFetchedResultsController<NSFetchRequestResult>(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: "taskDateString", cacheName: nil)
-        
         //now can preform fetchrequest, so records are returned from coredata and stored in fetch results controller. 
+        
+        
+        _fetchedResultsController?.delegate = self
+        //
+        
+        
         
         do {
             
@@ -173,11 +186,52 @@ class ToDoTasksTVC: UITableViewController, NSFetchedResultsControllerDelegate {
         
     }
     
-
+//Mark: FRC - Delegate Methods
     
     
+    //about to change content
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.tableView.beginUpdates()
+    }
     
     
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.tableView.endUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        
+        let sectionIndexSet = IndexSet(integer: sectionIndex)
+        
+        switch type {
+        case .insert:
+            self.tableView.insertSections(sectionIndexSet, with: .fade)
+        
+        case .delete:
+            self.tableView.deleteSections(sectionIndexSet, with: .fade)
+        default:
+            return
+            
+        }
+        
+    }
+    
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+        case .update:
+            configureCell(cell: tableView.cellForRow(at: indexPath!)!, atIndexPath: indexPath!)
+        case .move:
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
+        default:
+            return
+        }
+    }
     
     
     
