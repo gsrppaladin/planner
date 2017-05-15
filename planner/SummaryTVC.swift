@@ -7,22 +7,63 @@
 //
 
 import UIKit
+import CoreData
 
 class SummaryTVC: UITableViewController {
 
+    var tableData = [(String, Int)]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewWillAppear(_ animated: Bool) {
+        populateTableData()
+        tableView.reloadData()
+    }
+   
+    
+    func populateTableData() {
+        var totalTasks = 0
+        var totalCompleteTasks = 0
+        var todaysTask = 0
+        var todaysCompleteTasks = 0
+        
+        //count total tasks
+        
+        totalTasks = fetchData(entityName: "ToDo", predicate: nil, sortDescriptor: nil).count
+        
+        
+        //count total complete tasks
+            //will need a predicate. to see if the status is equal to true. 
+        let totalCompletePredicate = NSPredicate(format: "taskStatus = %@", true as CVarArg)
+        totalCompleteTasks = fetchData(entityName: "ToDo", predicate: totalCompletePredicate, sortDescriptor: nil).count
+        
+        //Count today's total tasks
+        
+        let today = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yy"
+        let todayString = formatter.string(from: today)
+        
+        
+        let todaysTotalTasksPredicate = NSPredicate(format: "taskDateString = %@", todayString)
+        todaysTask = fetchData(entityName: "ToDo", predicate: todaysTotalTasksPredicate, sortDescriptor: nil).count
+        
+        //Count today's complete tasks
+        let todaysCompleteTasksPredicate = NSPredicate(format: "taskStatus = %@ And taskDateString = %@", true as CVarArg, todayString)
+        totalCompleteTasks = fetchData(entityName: "ToDo", predicate: todaysCompleteTasksPredicate, sortDescriptor: nil).count
+        
+        tableData.removeAll()
+        tableData.append(("Today's Task", todaysTask))
+        tableData.append(("Today's Complete Tasks", todaysCompleteTasks))
+        tableData.append(("Total Tasks", totalTasks))
+        tableData.append(("Total Complete Tasks", totalCompleteTasks))
+        
+        print(tableData)
+        
     }
 
     // MARK: - Table view data source
@@ -47,40 +88,6 @@ class SummaryTVC: UITableViewController {
     }
     */
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     /*
     // MARK: - Navigation

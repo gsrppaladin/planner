@@ -70,10 +70,10 @@
             </objects>
             <point key="canvasLocation" x="1056.8" y="109.29535232383809"/>
         </scene>
-        <!--Table View Controller-->
+        <!--SummaryTVC-->
         <scene sceneID="59I-Sc-Mkq">
             <objects>
-                <tableViewController id="VhU-2w-7gF" sceneMemberID="viewController">
+                <tableViewController id="VhU-2w-7gF" customClass="SummaryTVC" customModule="planner" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="47" sectionHeaderHeight="28" sectionFooterHeight="28" id="Zx9-aG-I7n">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -127,11 +127,11 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="67"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q8U-14-BSw" id="dVV-7h-uub">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="66.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="66"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NBP-VR-XWa">
-                                            <rect key="frame" x="15" y="0.0" width="325" height="66.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="325" height="66"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
